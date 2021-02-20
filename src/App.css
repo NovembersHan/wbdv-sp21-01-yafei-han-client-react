@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.wbdv-bottom-right {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+.wbdv-color-red {
+  color: red
+}
