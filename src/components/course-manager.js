@@ -69,6 +69,7 @@ class CourseManager extends React.Component {
                     ]
                 })))
 
+        this.state.addCourse = ""
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
     }
