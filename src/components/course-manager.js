@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor";
@@ -6,11 +6,26 @@ import {Link, Route} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
 
 class CourseManager extends React.Component {
-    state = {
-        courses: [],
-        qwe: 123,
-        sdf: 456
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            courses: [],
+            qwe: 123,
+            sdf: 456,
+            addCourse: null
+        };
     }
+
+    handleChange(e) {
+        this.setState({addCourse: e.target.value});
+    }
+
+    // state = {
+    //     courses: [],
+    //     qwe: 123,
+    //     sdf: 456
+    // }
 
     updateCourse = (course) => {
         console.log(course)
@@ -40,9 +55,9 @@ class CourseManager extends React.Component {
 
     addCourse = () => {
         const newCourse = {
-            title: "New Course",
-            owner: "New Owner",
-            lastModified: "Never"
+            title: this.state.addCourse,
+            owner: "me",
+            lastModified: "1/1/2021"
         }
         courseService.createCourse(newCourse)
             .then(course => this.setState(
@@ -101,7 +116,9 @@ class CourseManager extends React.Component {
                         <h2>Course Manager</h2>
                     </div>
                     <div className="col-7">
-                        <input className="form-control"/>
+                        <input onChange={this.handleChange}
+                               value={this.state.addCourse}
+                               className="form-control"/>
                     </div>
                     <div className="col-1">
                         <i onClick={this.addCourse} className="fa fa-plus-circle fa-2x wbdv-color-red"></i>
@@ -128,7 +145,7 @@ class CourseManager extends React.Component {
                 <Route path="/courses/editor"
                        render={(props) => <CourseEditor {...props}/>}>
                 </Route>
-                <i className="fas fa-5x fa-plus-circle wbdv-bottom-right wbdv-color-red"></i>
+                <i onClick={this.addCourse} className="fas fa-5x fa-plus-circle wbdv-bottom-right wbdv-color-red"></i>
             </div>
         )
     }
