@@ -27,7 +27,7 @@ const CourseRow = (
             <td>
                 {
                     !editing &&
-                    <Link to="/courses/editor">
+                    <Link to="/editor">
                         {title}
                     </Link>
                 }
@@ -46,7 +46,7 @@ const CourseRow = (
                 {editing &&
                     <div>
                         <i onClick={() => saveTitle()} className="fas fa-check"></i>
-                        <i onClick={() => deleteCourse(course)} className="fas fa-times"></i>
+                        <i onClick={() => {deleteCourse(course); setEditing(false);}} className="fas fa-times"></i>
                     </div>
                 }
             </td>

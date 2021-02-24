@@ -21,14 +21,14 @@ const CourseCard = (
     }
 
     return (
-        <div className="col-4">
+        <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div className="card">
                 <img src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png" className="card-img-top" alt="..."/>
                 <div className="card-body">
                     <h5 className="card-title">
                         {
                             !editing &&
-                            <Link to="/courses/editor">
+                            <Link to="/editor">
                                 {title}
                             </Link>
                         }
@@ -42,14 +42,14 @@ const CourseCard = (
                     </h5>
                     <p className="card-text">Some description</p>
                     <img src={``}/>
-                    <Link to="/courses/editor" className="btn btn-primary">
+                    <Link to="/editor" className="btn btn-primary">
                         {title}
                     </Link>
                     {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right"></i>}
                     {editing &&
                     <div className="float-right">
                         <i onClick={() => saveTitle()} className="fas fa-check"></i>
-                        <i onClick={() => deleteCourse(course)} className="fas fa-times"></i>
+                        <i onClick={() => {deleteCourse(course); setEditing(false);}} className="fas fa-times"></i>
                     </div>
                     }
                 </div>
