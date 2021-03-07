@@ -1,11 +1,11 @@
-const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/001359498/courses";
+const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/001359498/courses"
 
 export const findAllCourses = () =>
     fetch(COURSES_URL)
         .then(response => response.json())
 
-export const deleteCourse = (id) =>
-    fetch(`${COURSES_URL}/${id}`, {
+export const deleteCourse = (courseId) =>
+    fetch(`${COURSES_URL}/${courseId}`, {
         method: 'DELETE'
     })
         .then(response => response.json())
@@ -20,8 +20,8 @@ export const createCourse = (course) =>
     })
         .then(response => response.json())
 
-export const updateCourse = (id, course) =>
-    fetch(`${COURSES_URL}/${id}`, {
+export const updateCourse = (courseId,course) =>
+    fetch(`${COURSES_URL}/${courseId}`, {
         method: 'PUT',
         body: JSON.stringify(course),
         headers: {
@@ -30,14 +30,11 @@ export const updateCourse = (id, course) =>
     })
         .then(response => response.json())
 
-const findCourseById = (id) =>
-    fetch(`${COURSES_URL}/${id}`)
-        .then(response => response.json())
-
-
-export default {
-    findAllCourses,
+const api = {
+    findAllCourses: findAllCourses,
     deleteCourse: deleteCourse,
     createCourse,
-    updateCourse: updateCourse
+    updateCourse
 }
+
+export default api;
