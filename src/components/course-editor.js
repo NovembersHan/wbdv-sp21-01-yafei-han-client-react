@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link, useParams, useHistory} from "react-router-dom";
-import moduleReducer from "../reducers/module-reducer";
+import {Link, useParams} from "react-router-dom";
+import moduleReducer from "../reducers/modules-reducer";
 import lessonReducer from "../reducers/lesson-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
@@ -12,33 +12,34 @@ const reducer = combineReducers({
     lessonReducer: lessonReducer
 })
 
+// const store = createStore(modulesReducer)
+// const store = createStore(lessonReducer)
 const store = createStore(reducer)
 
-const CourseEditor = ({history, params}) => {
-    const {layout, courseId, moduleId} = useParams();
-    return(
+const CourseEditor = ({history}) => {
+    const {courseId, moduleId} = useParams();
+    return (
         <Provider store={store}>
-            <h1>
-                <Link to="/courses/table">
-                    <i className="fas fa-arrow-left"></i>
-                </Link>
-                Course Editor
-                <i className="fas fa-times float-right"
-                   onClick={() => history.goBack()}></i>
-            </h1>
-            <div className="row">
-                <div className="col-3">
-                    <ModuleList/>
-                </div>
-                <div className="col-9">
-                    <LessonTabs/>
+            <div>
+                <h2>
+                    <Link to="/courses/table">
+                        <i className="fas fa-arrow-left"></i>
+                    </Link>
+                    Course Editor {courseId} {moduleId}
+                    <i onClick={() => history.goBack()}
+                       className="fas fa-times float-right"></i>
+                    {/*<i onClick={() => props.history.goBack()}*/}
+                    {/*   className="fas fa-times float-right"></i>*/}
+                </h2>
+                <div className="row">
+                    <div className="col-4">
+                        <ModuleList/>
+                    </div>
+                    <div className="col-8">
+                        <LessonTabs/>
+                    </div>
                 </div>
             </div>
-        </Provider>)
-}
-// const CourseEditor = () => {
-//   return (
-//     <h1>Course Editor</h1>
-//   )
-// }
+        </Provider>)}
+
 export default CourseEditor
