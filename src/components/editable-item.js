@@ -17,7 +17,7 @@ const EditableItem = (
                 !editing &&
                 <>
                     <Link className={`nav-link ${active?'active':''}`} to={to}>
-                        {item.title} {JSON.stringify(active)}
+                        {item.title}
                     </Link>
                     <i onClick={() => setEditing(true)} className="fas fa-edit"></i>
                 </>

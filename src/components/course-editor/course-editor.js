@@ -1,15 +1,18 @@
 import React from 'react'
 import {Link, useParams} from "react-router-dom";
-import moduleReducer from "../reducers/modules-reducer";
-import lessonReducer from "../reducers/lesson-reducer";
+import moduleReducer from "../../reducers/modules-reducer";
+import lessonReducer from "../../reducers/lesson-reducer";
+import topicReducer from "../../reducers/topic-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
+import TopicPills from "./topic-pills";
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
-    lessonReducer: lessonReducer
+    lessonReducer: lessonReducer,
+    topicReducer: topicReducer
 })
 
 // const store = createStore(modulesReducer)
@@ -17,7 +20,7 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
-    const {courseId, moduleId} = useParams();
+    const {courseId, moduleId, lessonId} = useParams();
     return (
         <Provider store={store}>
             <div>
@@ -25,7 +28,7 @@ const CourseEditor = ({history}) => {
                     <Link to="/courses/table">
                         <i className="fas fa-arrow-left"></i>
                     </Link>
-                    Course Editor {courseId} {moduleId}
+                    Course Editor {courseId} {moduleId} {lessonId}
                     <i onClick={() => history.goBack()}
                        className="fas fa-times float-right"></i>
                     {/*<i onClick={() => props.history.goBack()}*/}
@@ -37,6 +40,7 @@ const CourseEditor = ({history}) => {
                     </div>
                     <div className="col-8">
                         <LessonTabs/>
+                        <TopicPills/>
                     </div>
                 </div>
             </div>
