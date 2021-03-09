@@ -46,7 +46,7 @@ const stpm = (state) => {
 const dtpm = (dispatch) => {
     return {
         createTopic: (lessonId) => {
-            topicService.createTopicForLesson(lessonId, {title: "New Topic"})
+            topicService.createTopic(lessonId, {title: "New Topic"})
                 .then(theActualTopic => dispatch({
                     type: "CREATE_TOPIC",
                     topic: theActualTopic

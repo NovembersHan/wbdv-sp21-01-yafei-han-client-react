@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useParams} from "react-router-dom";
-import moduleReducer from "../../reducers/modules-reducer";
+import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
 import {combineReducers, createStore} from "redux";
