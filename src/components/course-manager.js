@@ -125,13 +125,13 @@ class CourseManager extends React.Component {
                         <i onClick={this.addCourse} className="fa fa-plus-circle fa-2x wbdv-color-red"></i>
                     </div>
                 </div>
-                <Route path="/courses/table">
+                <Route path="/courses/table" exact={true}>
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                <Route path="/courses/grid">
+                <Route path="/courses/grid" exact={true}>
                     <CourseGrid
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}

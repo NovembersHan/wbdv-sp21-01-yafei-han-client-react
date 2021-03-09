@@ -42,7 +42,7 @@ const CourseCard = (
                     </h5>
                     <p className="card-text">Some description</p>
                     <img src={``}/>
-                    <Link to="/editor" className="btn btn-primary">
+                    <Link to={`/courses/grid/edit/${course._id}`} className="btn btn-primary">
                         {title}
                     </Link>
                     {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit float-right"></i>}
