@@ -21,12 +21,6 @@ class CourseManager extends React.Component {
         this.setState({addCourse: e.target.value});
     }
 
-    // state = {
-    //     courses: [],
-    //     qwe: 123,
-    //     sdf: 456
-    // }
-
     updateCourse = (course) => {
         console.log(course)
         courseService.updateCourse(course._id, course)
@@ -34,22 +28,10 @@ class CourseManager extends React.Component {
                 ...prevState,
                 courses: prevState.courses.map(
                     (c) => c._id === course._id ? course : c)
-
-                // courses: prevState.courses.map(c => {
-                //   if(c._id === course._id) {
-                //     return course
-                //   } else {
-                //     return c
-                //   }
-                // })
             })))
     }
 
     componentDidMount = () =>
-        // findAllCourses()
-        //     .then(actualCourses => this.setState({
-        //       courses: actualCourses
-        //     }))
         findAllCourses()
             .then(courses => this.setState({courses}))
 
@@ -70,34 +52,11 @@ class CourseManager extends React.Component {
                 })))
 
         this.state.addCourse = ""
-        // this.state.courses.push(newCourse)
-        // this.setState(this.state)
     }
 
     deleteCourse = (courseToDelete) => {
         courseService.deleteCourse(courseToDelete._id)
             .then(status => {
-                // const newCourses = this.state.courses
-                //     .filter(course => course !== courseToDelete)
-                // this.setState({
-                //   courses: newCourses
-                // })
-                // this.setState((prevState) => {
-                //   // let nextState = {...prevState}
-                //   // nextState.courses =
-                //   //     prevState
-                //   //         .courses
-                //   //         .filter(course => course !== courseToDelete)
-                //
-                //   let nextState = {
-                //     ...prevState,
-                //     courses: prevState.courses.filter
-                //               (course => course !== courseToDelete)
-                //   }
-                //
-                //   return nextState
-                // })
-
                 this.setState((prevState) => ({
                     ...prevState,
                     courses: prevState.courses.filter
@@ -137,21 +96,12 @@ class CourseManager extends React.Component {
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                {/*<Route path="/courses/editor">*/}
-                {/*    <CourseEditor/>*/}
-                {/*</Route>*/}
-                {/*<Route path="/courses/editor"*/}
-                {/*       render={(props) => <CourseEditor props={props}/>}>*/}
-                {/*</Route>*/}
-                {/*<Route path="/courses/editor"*/}
-                {/*       render={(props) => <CourseEditor {...props}/>}>*/}
-                {/*</Route>*/}
                 <Route path={[
                     "/courses/:layout/edit/:courseId",
                     "/courses/:layout/edit/:courseId/modules/:moduleId",
                     "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"]}
-                    exact={true}
-                    render={(props) => <CourseEditor {...props}/>}>
+                       exact={true}
+                       render={(props) => <CourseEditor {...props}/>}>
                 </Route>
                 <i onClick={this.addCourse} className="fas fa-5x fa-plus-circle wbdv-bottom-right wbdv-color-red"></i>
             </div>
