@@ -8,7 +8,7 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
-import courseService, {findCourseById} from "../../services/course-service"
+import {findCourseById} from "../../services/course-service"
 
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
@@ -22,10 +22,9 @@ const store = createStore(reducer)
 
 const CourseEditor = (
     {
-        history,
         title
     }) => {
-    const {courseId, moduleId, lessonId} = useParams();
+    const {layout, courseId} = useParams();
     const [realTitle, setRealTitle] = useState(title)
     useEffect(() => {
         // alert(moduleId)
@@ -36,12 +35,10 @@ const CourseEditor = (
         <Provider store={store}>
             <div>
                 <h2>
-                    <Link to="/courses/table">
-                        <i className="fas fa-arrow-left"></i>
+                    <Link to={`/courses/${layout}`}>
+                        <i className="fas fa-times"></i>
                     </Link>
-                    Course Editor {realTitle}
-                    <i onClick={() => history.goBack()}
-                       className="fas fa-times float-right"></i>
+                    {realTitle}
                     {/*<i onClick={() => props.history.goBack()}*/}
                     {/*   className="fas fa-times float-right"></i>*/}
                 </h2>
