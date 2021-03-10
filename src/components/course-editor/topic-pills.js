@@ -24,10 +24,10 @@ const TopicPills = (
                     myTopics.map(topic =>
                         <li className={`nav-item ${topic._id === topicId ? 'active' : ''}`}>
                             <EditableItem
-                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}`}
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 updateItem={updateTopic}
                                 deleteItem={deleteTopic}
-                                active={true}
+                                active={topic._id === topicId}
                                 item={topic}/>
                         </li>
                     )

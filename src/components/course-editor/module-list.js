@@ -28,7 +28,7 @@ const ModuleList = (
                                 to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                                 updateItem={updateModule}
                                 deleteItem={deleteModule}
-                                active={true}
+                                active={module._id === moduleId}
                                 item={module}/>
                         </li>
                     )

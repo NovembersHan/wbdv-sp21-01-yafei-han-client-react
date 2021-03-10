@@ -96,13 +96,6 @@ class CourseManager extends React.Component {
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                <Route path={[
-                    "/courses/:layout/edit/:courseId",
-                    "/courses/:layout/edit/:courseId/modules/:moduleId",
-                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"]}
-                       exact={true}
-                       render={(props) => <CourseEditor {...props}/>}>
-                </Route>
                 <i onClick={this.addCourse} className="fas fa-5x fa-plus-circle wbdv-bottom-right wbdv-color-red"></i>
             </div>
         )

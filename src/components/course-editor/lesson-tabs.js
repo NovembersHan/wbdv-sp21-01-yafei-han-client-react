@@ -28,7 +28,7 @@ const LessonTabs = (
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
                                 updateItem={updateLesson}
                                 deleteItem={deleteLesson}
-                                active={true}
+                                active={lesson._id === lessonId}
                                 item={lesson}/>
                         </li>
                     )
