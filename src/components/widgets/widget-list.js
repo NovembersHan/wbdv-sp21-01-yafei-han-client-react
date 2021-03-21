@@ -45,18 +45,32 @@ const WidgetList = (
                                 }} className="fas fa-cog float-right"></i>
                             }
                             {
-                                _widget.type === "HEADING" &&
+                                _widget.id !== widget.id && _widget.type === "HEADING" &&
                                 <HeadingWidget
                                     setWidget={setWidget}
                                     editing={_widget.id === widget.id}
                                     widget={_widget}/>
                             }
                             {
-                                _widget.type === "PARAGRAPH" &&
+                                _widget.id !== widget.id && _widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
                                     setWidget={setWidget}
                                     editing={_widget.id === widget.id}
                                     widget={_widget}/>
+                            }
+                            {
+                                _widget.id === widget.id && _widget.type === "HEADING" &&
+                                <HeadingWidget
+                                    setWidget={setWidget}
+                                    editing={_widget.id === widget.id}
+                                    widget={widget}/>
+                            }
+                            {
+                                _widget.id === widget.id && _widget.type === "PARAGRAPH" &&
+                                <ParagraphWidget
+                                    setWidget={setWidget}
+                                    editing={_widget.id === widget.id}
+                                    widget={widget}/>
                             }
                         </li>
                     )

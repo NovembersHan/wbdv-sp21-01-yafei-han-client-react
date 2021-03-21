@@ -19,6 +19,11 @@ const HeadingWidget = ({widget, setWidget, editing}) =>
                 <select onChange={(e) => setWidget(widget => ({...widget, type: e.target.value}))} value={widget.type} className="form-control">
                     <option value={"HEADING"}>Heading</option>
                     <option value={"PARAGRAPH"}>Paragraph</option>
+                    <option value={"VIDEO"}>Video</option>
+                    <option value={"IMAGE"}>Image</option>
+                    <option value={"LINK"}>Link</option>
+                    <option value={"LIST"}>List</option>
+                    <option value={"HTML"}>HTML</option>
                 </select>
                 <input onChange={(e) => setWidget(widget => ({...widget, text: e.target.value}))} value={widget.text} className="form-control"/>
                 <select onChange={(e) => setWidget(widget => ({...widget, size: parseInt(e.target.value)}))} value={widget.size} className="form-control">
