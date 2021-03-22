@@ -1,7 +1,7 @@
-
+const WIDGET_URL = process.env.REACT_APP_WIDGET_URL
 
 export const createWidget = (tid, widget) =>
-    fetch(`http://limitless-citadel-68068.herokuapp.com/api/topics/${tid}/widgets`, {
+    fetch(`${WIDGET_URL}/topics/${tid}/widgets`, {
         method: "POST",
         body: JSON.stringify(widget),
         headers: {
@@ -11,11 +11,11 @@ export const createWidget = (tid, widget) =>
         .then(response => response.json())
 
 export const findWidgetsForTopic = (tid) =>
-    fetch(`http://limitless-citadel-68068.herokuapp.com/api/topics/${tid}/widgets`)
+    fetch(`${WIDGET_URL}/topics/${tid}/widgets`)
         .then(response => response.json())
 
 export const updateWidget = (wid, widget) =>
-    fetch(`http://limitless-citadel-68068.herokuapp.com/api/widgets/${wid}`, {
+    fetch(`${WIDGET_URL}/widgets/${wid}`, {
         method: "PUT",
         body: JSON.stringify(widget),
         headers: {
@@ -25,7 +25,7 @@ export const updateWidget = (wid, widget) =>
         .then(response => response.json())
 
 export const deleteWidget = (wid) =>
-    fetch(`http://limitless-citadel-68068.herokuapp.com/api/widgets/${wid}`, {
+    fetch(`${WIDGET_URL}/widgets/${wid}`, {
         method: "DELETE"
     })
         .then(response => response.json())
