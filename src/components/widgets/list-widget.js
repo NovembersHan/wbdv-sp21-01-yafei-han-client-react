@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const ListWidget = ({widget, setWidget, editing}) => {
+    const [widget2, setWidget2] = useState(widget)
     return(
         <div>
             {
                 editing &&
                 <>
-                    <input checked={widget.ordered} onClick={() => {widget.ordered = !widget.ordered}} type="checkbox"/> Ordered
+                    <input checked={widget2.ordered}
+                           onClick={() => {widget.ordered = !widget.ordered;
+                           setWidget2(widget2 => ({...widget2, ordered: widget2.ordered}));}}
+                           type="checkbox"/> Ordered
                     <br/>
                     List items
                     <textarea
@@ -14,7 +18,6 @@ const ListWidget = ({widget, setWidget, editing}) => {
                         value={widget.text}
                         rows={10}
                         className="form-control"></textarea>
-                    {/*{JSON.stringify(widget)}*/}
                 </>
             }
             {
