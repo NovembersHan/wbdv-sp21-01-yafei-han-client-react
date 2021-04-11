@@ -42,6 +42,11 @@ const CourseRow = (
             <td className="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">{owner}</td>
             <td className="d-none d-lg-block d-xl-block">{lastModified}</td>
             <td>
+                <Link to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
+            </td>
+            <td>
                 {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
                 {editing &&
                     <div>
