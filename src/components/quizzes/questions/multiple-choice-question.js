@@ -37,6 +37,7 @@ const MultipleChoiceQuestion = ({question}) => {
                                 <label><input
                                     onClick={() => {
                                         setYourAnswer(choice)
+                                        question.answer = choice
                                     }}
                                     type="radio"
                                     name={question._id}/> {choice}</label>
