@@ -19,3 +19,8 @@ export const submitQuiz = (quizId, questions) => {
         }
     }).then(response => response.json())
 }
+
+export const findAttemptsForQuiz = (quizId) => {
+    return fetch(`${QUIZZES_URL}/${quizId}/attempts`)
+        .then(response => response.json())
+}
